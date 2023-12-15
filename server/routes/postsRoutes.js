@@ -10,6 +10,7 @@ router.post('/', async (request, response) => {
         if (
             !request.body.title ||
             !request.body.description ||
+            !request.body.thumbnail ||
             !request.body.likes ||
             !request.body.comments
         ) {
@@ -20,6 +21,7 @@ router.post('/', async (request, response) => {
         const newPost = {
             title: request.body.title,
             description: request.body.description,
+            thumbnail: request.body.thumbnail,
             likes: request.body.likes,
             comments: request.body.comments,
         };
@@ -65,11 +67,12 @@ router.put('/:id', async (request, response) => {
         if (
             !request.body.title ||
             !request.body.description ||
+            !request.body.thumbnail ||
             !request.body.likes ||
             !request.body.comments
         ) {
             return response.status(400).send({
-                message: 'Send all required fields: title, description',
+                message: 'Send all required fields: title, description, thumbnail',
             });
         }
 

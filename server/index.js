@@ -4,8 +4,21 @@ import { request } from "http";
 import mongoose from "mongoose";
 import { Post } from './models/blogModel.js';
 import postsRoutes from "./routes/postsRoutes.js";
+import cors from 'cors';
 
 const app = express();
+
+//Option 1: Allow all origins with default of cors(*)
+app.use(cors());
+
+//Option 2: Allow Custom origins
+// app.use(
+//     cors({
+//         origin: 'http://localhost:3000',
+//         methods: ['GET', 'PUT', 'POST', 'DELETE'],
+//         allowedHeaders: ['Content-Type'],
+// })
+// );
 
 app.use(express.json());
 
