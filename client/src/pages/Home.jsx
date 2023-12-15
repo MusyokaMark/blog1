@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
+import { MdThumbUp, MdComment } from 'react-icons/md';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -87,10 +88,20 @@ const Home = () => {
               <p className="text-gray-600">
                 {truncateDescription(post.description)}
               </p>
+              <div className="flex items-center space-x-40 mt-8">
+                <div className="flex items-center">
+                  <MdThumbUp />
+                  <span className="ml-1">{post.likes}</span>
+                </div>
+                <div className="flex items-center">
+                  <MdComment />
+                  <span className="ml-1">{post.comments.length}</span>
+                </div>
+              </div>
             </Link>
-            
+
           ))}
-          
+
         </div>
       )}
     </div>
